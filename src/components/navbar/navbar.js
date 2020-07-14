@@ -13,52 +13,53 @@ import { ReactComponent as Groups } from "../../icons/Groups.svg";
 import { ReactComponent as Totoro } from "../../icons/totoro.svg";
 import { ReactComponent as ArrowIcon } from "../../icons/arrow.svg";
 import { ReactComponent as BoltIcon } from "../../icons/bolt.svg";
-import "./nav.css";
 
 function Navbar() {
   return (
-    <nav className="navbar">
-      <div className="nav-brand">
-        <Icon className="logo" />
-      </div>
-      <div className="navbar-mid">
-        <ul className="navbar-navmid">
-          <li>
-          <Home className="logo-nav" />
-          </li>
-          <li>
-          <Trending className="logo-nav" />
-          </li>
-          <li>
-          <Users className="logo-nav"/>
-          </li>
-          <li>
-          <Groups className="logo-nav"/>
-          </li>
-          <li>
-          <Totoro className="logo-nav"/>
-          </li>
-        </ul>
-      </div>
-      <div className="nav-links">
-        <ul className="navbar-nav">
-          <li>
-            <NavItem icon={<PlusIcon />}></NavItem>
-          </li>
-          <li>
-            <NavItem icon={<BellIcon />}></NavItem>
-          </li>
-          <li>
-            <NavItem icon={<Messenger />}></NavItem>
-          </li>
-          <li>
-            <NavItem icon={<CaretIcon />}>
-              <DropDownMenu />
-            </NavItem>
-          </li>
-        </ul>
-      </div>
-    </nav>
+    <div className="nav-container">
+      <nav className="navbar">
+        <div className="nav-brand">
+          <Icon className="logo" />
+        </div>
+        <div className="navbar-mid">
+          <ul className="navbar-navmid">
+            <li>
+              <Home className="logo-nav" />
+            </li>
+            <li>
+              <Trending className="logo-nav" />
+            </li>
+            <li>
+              <Users className="logo-nav" />
+            </li>
+            <li>
+              <Groups className="logo-nav" />
+            </li>
+            <li>
+              <Totoro className="logo-nav" />
+            </li>
+          </ul>
+        </div>
+        <div className="nav-links">
+          <ul className="navbar-nav">
+            <li>
+              <NavItem icon={<PlusIcon />}></NavItem>
+            </li>
+            <li>
+              <NavItem icon={<BellIcon />}></NavItem>
+            </li>
+            <li>
+              <NavItem icon={<Messenger />}></NavItem>
+            </li>
+            <li>
+              <NavItem icon={<CaretIcon />}>
+                <DropDownMenu />
+              </NavItem>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
   );
 }
 
