@@ -3,7 +3,7 @@ import axios from "axios";
 
 //Custom Components
 import Post from "../components/post/Post";
-
+import Profile from "../components/Profile/profile";
 //Material Ui Components
 import Grid from "@material-ui/core/Grid";
 
@@ -36,7 +36,7 @@ class home extends Component {
           <div className="posts">{recentPostsMarkup}</div>
         </Grid>
         <Grid item sm={4} xs={12}>
-          <p>Side Content</p>
+          <Profile />
         </Grid>
       </Grid>
     );
