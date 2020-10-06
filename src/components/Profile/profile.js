@@ -22,7 +22,11 @@ import LocationOnIcon from "@material-ui/icons/LocationOn";
 import PublicIcon from "@material-ui/icons/Public";
 import ScheduleIcon from "@material-ui/icons/Schedule";
 import EditIcon from "@material-ui/icons/Edit";
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import BusinessIcon from "@material-ui/icons/Business";
+
+//Components
+import EditDetails from "../Edit/EditDetails";
 
 const styles = ThemeFile;
 
@@ -30,7 +34,7 @@ class Profile extends Component {
   handleImageChange = (event) => {
     const image = event.target.files[0];
     const formData = new FormData();
-    formData.append('image', image, image.name);
+    formData.append("image", image, image.name);
     this.props.uploadImage(formData);
   };
 
@@ -41,7 +45,7 @@ class Profile extends Component {
 
   handleLogout = () => {
     this.props.logoutUser();
-  }
+  };
   render() {
     const {
       classes,
@@ -53,6 +57,7 @@ class Profile extends Component {
           bio,
           website,
           location,
+          company,
           followers,
           following,
         },
@@ -89,32 +94,47 @@ class Profile extends Component {
                 @{userHandle}
               </MuiLink>
               <hr />
-              {bio && <Typography variant="body2"> {bio} </Typography>}
-              <hr />
-              {location && (
-                <Fragment>
-                  <LocationOnIcon color="secondary" /> <span> {location} </span>
-                  <hr />
-                </Fragment>
-              )}
-              {website && (
-                <Fragment>
-                  <PublicIcon color="secondary" />
-                  <a href={website} target="_blank" rel="noopener noreferrer">
-                    {" "}
-                    {website}
-                  </a>
-                  <hr />
-                </Fragment>
-              )}
-              <ScheduleIcon color="secondary" />{" "}
-              <span>Joined Since {dayjs(createdAt).format("MMM YYYY")}</span>
+              <div className="profile__details">
+                {bio && <Typography variant="body2"> {bio} </Typography>}
+                <hr />
+                {location && (
+                  <Fragment>
+                    <div className="details__container"><LocationOnIcon color="secondary" />{" "}
+                    <span> {location} </span>
+                    </div>
+                    <hr />
+                  </Fragment>
+                )}
+                {company && (
+                  <Fragment>
+                    <div className="details__container"><BusinessIcon color="secondary" /> <span> {company} </span></div>
+                    <hr />
+                  </Fragment>
+                )}
+                {website && (
+                  <Fragment>
+                    <div className="details__container">
+                    <PublicIcon color="secondary" />
+                    <a href={website} target="_blank" rel="noopener noreferrer">
+                      {" "}
+                      {website}
+                    </a>
+                    </div>
+                    <hr />
+                  </Fragment>
+                )}
+                <div className="details__container">
+                <ScheduleIcon color="secondary" />{" "}
+                <span>Joined Since {dayjs(createdAt).format("MMM YYYY")}</span>
+                </div>
+              </div>
             </div>
             <Tooltip title="Logout">
               <IconButton onClick={this.handleLogout}>
-                <ExitToAppIcon color="secondary"/>
+                <ExitToAppIcon color="secondary" />
               </IconButton>
             </Tooltip>
+            <EditDetails />
           </div>
         </Paper>
       ) : (
@@ -159,7 +179,10 @@ Profile.propTypes = {
   user: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
   logoutUser: PropTypes.func.isRequired,
-  uploadImage: PropTypes.func.isRequired
+  uploadImage: PropTypes.func.isRequired,
 };
 
-export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(Profile));
+export default connect(
+  mapStateToProps,
+  mapActionsToProps
+)(withStyles(styles)(Profile));
