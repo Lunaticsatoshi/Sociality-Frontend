@@ -19,6 +19,14 @@ body{
   height: 35px;
   width: 35px;
   margin-left: 3rem;
+  color: #fff;
 }
 
+.logo-nav svg {
+  color: #fff;
+}
+
+.navbar-navmid svg {
+  color: #fff;
+}
 

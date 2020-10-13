@@ -1,5 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+//Redux
+import { connect } from 'react-redux';
+
+//Components
+import Navbar from "../navbar/navbar";
+import HiddenNavBar from "../navbar/hidden_navbar";
 
 //Material UI
 import AppBar from '@material-ui/core/AppBar';
@@ -11,17 +19,33 @@ import AddOutlinedIcon from '@material-ui/icons/AddOutlined';
 
 class Appbar extends Component {
     render() {
+        const { authenticated } = this.props;
         return (
-            <AppBar>
+            authenticated ? (
+                <Fragment>
+                    <Navbar />
+                    <HiddenNavBar />
+                </Fragment>
+            ) : (
+                <AppBar>
                 <Toolbar className="nav-container">
                     <Button color="inherit" component={Link} to="/login"><div className="app"><AccountCircleOutlinedIcon fontSize="large" />Login</div></Button>
                     <Button color="inherit" component={Link} to="/"><div className="app"><HomeIcon fontSize="large"/>Home</div></Button>
                     <Button color="inherit" component={Link} to="/signup"><div className="app"><AddOutlinedIcon fontSize="large"/>Sign Up</div></Button>
                 </Toolbar>
             </AppBar>
-        )
+            )
+        );
     }
 }
 
-export default Appbar
+Appbar.propTypes = {
+    authenticated: PropTypes.bool.isRequired
+}
+
+const mapStateToProps = (state) => ({
+    authenticated: state.user.authenticated,
+})
+
+export default connect(mapStateToProps)(Appbar);
 
