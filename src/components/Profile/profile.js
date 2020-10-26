@@ -14,8 +14,8 @@ import ThemeFile from "../../util/theme";
 import Paper from "@material-ui/core/Paper";
 import MuiLink from "@material-ui/core/Link";
 import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
-import Tooltip from "@material-ui/core/Tooltip";
+// import IconButton from "@material-ui/core/IconButton";
+// import Tooltip from "@material-ui/core/Tooltip";
 
 //Icons
 import LocationOnIcon from "@material-ui/icons/LocationOn";
@@ -27,6 +27,8 @@ import BusinessIcon from "@material-ui/icons/Business";
 
 //Components
 import EditDetails from "../Edit/EditDetails";
+
+import MyButton from "../../util/Button";
 
 const styles = ThemeFile;
 
@@ -77,11 +79,9 @@ class Profile extends Component {
                 onChange={this.handleImageChange}
                 hidden="hidden"
               />
-              <Tooltip title="Edit Profile Picture" placement="top">
-                <IconButton onClick={this.handleEditPicture} className="button">
-                  <EditIcon color="primary" />
-                </IconButton>
-              </Tooltip>
+              <MyButton tip="Edit Profile picture" onClick={this.handleEditPicture} btnClassName="button" >
+                <EditIcon color="primary" />
+              </MyButton>
             </div>
             <hr />
             <div className="profile-details">
@@ -129,11 +129,9 @@ class Profile extends Component {
                 </div>
               </div>
             </div>
-            <Tooltip title="Logout">
-              <IconButton onClick={this.handleLogout}>
-                <ExitToAppIcon color="secondary" />
-              </IconButton>
-            </Tooltip>
+            <MyButton tip="Logout" onClick={this.handleLogout} btnClassName="button">
+              <ExitToAppIcon color="secondary" />
+            </MyButton>
             <EditDetails />
           </div>
         </Paper>

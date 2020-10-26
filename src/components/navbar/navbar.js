@@ -7,13 +7,13 @@ import { ReactComponent as BellIcon } from "../../icons/bell.svg";
 // import { ReactComponent as Messenger } from "../../icons/messenger.svg";
 import { ReactComponent as CaretIcon } from "../../icons/caret.svg";
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg";
-import { ReactComponent as Home } from "../../icons/Home.svg";
-import { ReactComponent as Trending } from "../../icons/Trending.svg";
-import { ReactComponent as Users } from "../../icons/User.svg";
-import { ReactComponent as Groups } from "../../icons/Groups.svg";
+// import { ReactComponent as Home } from "../../icons/Home.svg";
+// import { ReactComponent as Trending } from "../../icons/Trending.svg";
+// import { ReactComponent as Users } from "../../icons/User.svg";
+// import { ReactComponent as Groups } from "../../icons/Groups.svg";
 import { ReactComponent as Totoro } from "../../icons/totoro.svg";
-import { ReactComponent as ArrowIcon } from "../../icons/arrow.svg";
-import { ReactComponent as BoltIcon } from "../../icons/bolt.svg";
+// import { ReactComponent as ArrowIcon } from "../../icons/arrow.svg";
+// import { ReactComponent as BoltIcon } from "../../icons/bolt.svg";
 
 import Button from "../../util/Button";
 
@@ -34,8 +34,8 @@ function Navbar() {
           <ul className="navbar-navmid">
             <Button tip="Home">
               <li className="logo-nav">
-                <Link to="/">
-                  <HomeIcon fontSize="large" />
+                <Link to="/login">
+                  <HomeIcon color="primary" fontSize="large" />
                 </Link>
               </li>
             </Button>
@@ -73,7 +73,7 @@ function Navbar() {
                 <NavItem icon={<BellIcon />}></NavItem>
               </li>
             </Button>
-            <Button btnClassName="nav__btn">
+            <Button tip="DropDown" btnClassName="nav__btn">
               <li>
                 <NavItem icon={<CaretIcon />}>
                   <DropDownMenu />
