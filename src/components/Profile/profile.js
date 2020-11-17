@@ -69,72 +69,170 @@ class Profile extends Component {
     } = this.props;
     let profileMarkup = !loading ? (
       authenticated ? (
-        <Paper className={classes.paper}>
-          <div className={classes.profile}>
-            <div className="image-wrapper">
-              <img src={imageUrl} alt="profile" className="profile-image" />
-              <input
-                type="file"
-                id="imageInput"
-                onChange={this.handleImageChange}
-                hidden="hidden"
-              />
-              <MyButton tip="Edit Profile picture" onClick={this.handleEditPicture} btnClassName="button" >
-                <EditIcon color="primary" />
-              </MyButton>
-            </div>
-            <hr />
-            <div className="profile-details">
-              <MuiLink
-                component={Link}
-                to={`/users/${userHandle}`}
-                color="success"
-                variant="h5"
-              >
-                @{userHandle}
-              </MuiLink>
-              <hr />
-              <div className="profile__details">
-                {bio && <Typography variant="body2"> {bio} </Typography>}
-                <hr />
-                {location && (
-                  <Fragment>
-                    <div className="details__container"><LocationOnIcon color="secondary" />{" "}
-                    <span> {location} </span>
-                    </div>
-                    <hr />
-                  </Fragment>
-                )}
-                {company && (
-                  <Fragment>
-                    <div className="details__container"><BusinessIcon color="secondary" /> <span> {company} </span></div>
-                    <hr />
-                  </Fragment>
-                )}
-                {website && (
-                  <Fragment>
-                    <div className="details__container">
-                    <PublicIcon color="secondary" />
-                    <a href={website} target="_blank" rel="noopener noreferrer">
-                      {" "}
-                      {website}
-                    </a>
-                    </div>
-                    <hr />
-                  </Fragment>
-                )}
-                <div className="details__container">
-                <ScheduleIcon color="secondary" />{" "}
-                <span>Joined Since {dayjs(createdAt).format("MMM YYYY")}</span>
+        // <Paper className={classes.paper}>
+        //   <div className={classes.profile}>
+        //     <div className="image-wrapper">
+        //       <img src={imageUrl} alt="profile" className="profile-image" />
+        //       <input
+        //         type="file"
+        //         id="imageInput"
+        //         onChange={this.handleImageChange}
+        //         hidden="hidden"
+        //       />
+        //       <MyButton tip="Edit Profile picture" onClick={this.handleEditPicture} btnClassName="button" >
+        //         <EditIcon color="primary" />
+        //       </MyButton>
+        //     </div>
+        //     <hr />
+        //     <div className="profile-details">
+        //       <MuiLink
+        //         component={Link}
+        //         to={`/users/${userHandle}`}
+        //         color="success"
+        //         variant="h5"
+        //       >
+        //         @{userHandle}
+        //       </MuiLink>
+        //       <hr />
+        //       <div className="profile__details">
+        //         {bio && <Typography variant="body2"> {bio} </Typography>}
+        //         <hr />
+        //         {location && (
+        //           <Fragment>
+        //             <div className="details__container"><LocationOnIcon color="secondary" />{" "}
+        //             <span> {location} </span>
+        //             </div>
+        //             <hr />
+        //           </Fragment>
+        //         )}
+        //         {company && (
+        //           <Fragment>
+        //             <div className="details__container"><BusinessIcon color="secondary" /> <span> {company} </span></div>
+        //             <hr />
+        //           </Fragment>
+        //         )}
+        //         {website && (
+        //           <Fragment>
+        //             <div className="details__container">
+        //             <PublicIcon color="secondary" />
+        //             <a href={website} target="_blank" rel="noopener noreferrer">
+        //               {" "}
+        //               {website}
+        //             </a>
+        //             </div>
+        //             <hr />
+        //           </Fragment>
+        //         )}
+        //         <div className="details__container">
+        //         <ScheduleIcon color="secondary" />{" "}
+        //         <span>Joined Since {dayjs(createdAt).format("MMM YYYY")}</span>
+        //         </div>
+        //       </div>
+        //     </div>
+        //     <MyButton tip="Logout" onClick={this.handleLogout} btnClassName="button">
+        //       <ExitToAppIcon color="secondary" />
+        //     </MyButton>
+        //     <EditDetails />
+
+        //   </div>
+
+        // </Paper>
+        <div>
+          <div className="profile__card">
+            <div className={classes.profile}>
+              <div className="image-wrapper">
+                <img src={imageUrl} alt="profile" className="pic" />
+                <input
+                  type="file"
+                  id="imageInput"
+                  onChange={this.handleImageChange}
+                  hidden="hidden"
+                />
+                <MyButton
+                  tip="Edit Profile picture"
+                  onClick={this.handleEditPicture}
+                  btnClassName="button"
+                >
+                  <EditIcon color="primary" />
+                </MyButton>
+              </div>
+
+              <div className="name">
+                <MuiLink
+                  component={Link}
+                  to={`/users/${userHandle}`}
+                  variant="h5"
+                >
+                  @{userHandle}
+                </MuiLink>
+              </div>
+              <div className="title">
+                <span>PROGRAMMER</span>
+              </div>
+              <div className="detail__container">
+                <div className="weeb__level">
+                  {location && (
+                    <Fragment>
+                      <div className="weeb__level">
+                        <LocationOnIcon color="secondary" />{" "}
+                        <span> {location} </span>
+                      </div>
+                      <hr />
+                    </Fragment>
+                  )}
+                </div>
+                <div className="joining__date">
+                  <div className="weeb__num">
+                    <ScheduleIcon color="secondary" />{" "}
+                    <span>{dayjs(createdAt).format("MMM YYYY")}</span>
+                  </div>
                 </div>
               </div>
+              <div className="detail__container">
+                <div className="weeb__level">
+                  {company && (
+                    <Fragment>
+                      <div className="weeb__level">
+                        <BusinessIcon color="secondary" />{" "}
+                        <span> {company} </span>
+                      </div>
+                    </Fragment>
+                  )}
+                </div>
+                <div className="joining__date">
+                  {website && (
+                    <Fragment>
+                      <div className="weeb__num">
+                        <PublicIcon color="secondary" />
+                        <a
+                          href={website}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {" "}
+                          {website}
+                        </a>
+                      </div>
+                    </Fragment>
+                  )}
+                </div>
+              </div>
+              <div className="description">
+                <small>
+                  <p>
+                    {" "}
+                    {bio && (
+                      <Typography variant="body2"> {bio} </Typography>
+                    )}{" "}
+                  </p>
+                </small>
+              </div>
+              <div className="message">
+                <a href="">Message</a>
+              </div>
             </div>
-            <MyButton tip="Logout" onClick={this.handleLogout} btnClassName="button">
-              <ExitToAppIcon color="secondary" />
-            </MyButton>
-            <EditDetails />
           </div>
-        </Paper>
+        </div>
       ) : (
         <Paper className={classes.paper}>
           <Typography variant="body2" align="center">

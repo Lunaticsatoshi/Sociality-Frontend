@@ -126,6 +126,16 @@
   .social {
     margin-top:12px;
   }
+
+  .social__container{
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .interactions{
+    display: flex;
+    flex-direction: column;
+  }
   .social-buttons {
     color: #7f7f7f;
     font-family: Helvetica;

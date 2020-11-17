@@ -2,6 +2,11 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import PropTypes from 'prop-types';
+
+//Redux
+import { connect } from 'react-redux';
+import {likePost, unlikePost } from "../../redux/actions/dataActions";
 //Material Ui Components
 import withStyles from "@material-ui/core/styles/withStyles";
 import Card from "@material-ui/core/Card";
@@ -103,12 +108,17 @@ class posts extends Component {
             <div className="reference">
               {imageMarkup}
             </div>
+            <div className="social__container">
+            <div className="interactions"><span> {likeCount} </span> Upvotes</div>
+            <div className="interactions"><span> {commentCount} </span> Comments</div>
+            </div>
           </CardContent>
           <div className="social">
             <div className="social-content"></div>
             <div className="social-buttons">
               <span>
                 <FavoriteBorderIcon />
+                {likeCount}
               </span>
               <span>
                 <ChatBubbleOutlineIcon />
@@ -124,4 +134,21 @@ class posts extends Component {
   }
 }
 
-export default withStyles(styles)(posts);
+posts.propTypes = {
+  likePost: PropTypes.func.isRequired,
+  unlikePost: PropTypes.func.isRequired,
+  user: PropTypes.object.isRequired,
+  post: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
+}
+
+const mapStateToProps = state => ({
+  user: state.user
+})
+
+const mapActionsToProps = {
+  likePost,
+  unlikePost
+}
+
+export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(posts));

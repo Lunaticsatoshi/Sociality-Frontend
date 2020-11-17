@@ -19,7 +19,7 @@ export const getPosts = () => dispatch => {
         })
 }
 
-//TODO: Like a POST
+// Like a POST
 export const likePost = (postId) => dispatch => {
     axios.get(`/post/${postId}/like`)
         .then(res => {
@@ -31,7 +31,7 @@ export const likePost = (postId) => dispatch => {
         .catch(err => console.log(err));
 }
 
-//TODO: UNLIKE a POST
+// UNLIKE a POST
 export const unlikePost = (postId) => dispatch => {
     axios.get(`/post/${postId}/unlike`)
         .then(res => {
